@@ -1,8 +1,8 @@
 // All page interactivity: countdown, scroll-reveal, FAQ accordion, smooth
-// in-page navigation, the sticky mobile CTA, the lead-form mailto fallback,
-// and — because this page is meant to be embedded as a WordPress iframe —
-// a postMessage height sync so the parent page can size the iframe to fit
-// content instead of showing a fixed-height scrollbar.
+// in-page navigation, the sticky mobile CTA, and — because this page is
+// meant to be embedded as a WordPress iframe — a postMessage height sync
+// so the parent page can size the iframe to fit content instead of showing
+// a fixed-height scrollbar.
 
 (function () {
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -107,7 +107,7 @@
     });
   }
 
-  // ---- Keep the sticky CTA from covering the contact form or final CTA ----
+  // ---- Keep the sticky CTA from covering the final CTA card ----
   if (mobileCta && 'IntersectionObserver' in window) {
     var suppressObserver = new IntersectionObserver(
       function (entries) {
@@ -118,40 +118,8 @@
       },
       { threshold: 0.08 }
     );
-    var contactPanel = document.getElementById('quick-contact');
     var finalCard = document.querySelector('.final-card');
-    if (contactPanel) suppressObserver.observe(contactPanel);
     if (finalCard) suppressObserver.observe(finalCard);
-  }
-
-  // ---- Lead form: validate, then open a pre-addressed email ----
-  var form = document.getElementById('tryoutLeadForm');
-  var status = document.getElementById('formStatus');
-  if (form) {
-    form.addEventListener('submit', function (event) {
-      event.preventDefault();
-      if (!form.checkValidity()) {
-        form.reportValidity();
-        status.textContent = 'Please complete the required fields.';
-        return;
-      }
-      var data = new FormData(form);
-      var name = String(data.get('parentName') || 'Parent');
-      var subject = 'Fall Rep Tryout Question — ' + String(data.get('playerAge') || 'Player');
-      var body = [
-        'Parent / guardian: ' + name,
-        'Phone: ' + String(data.get('parentPhone') || ''),
-        'Player age group: ' + String(data.get('playerAge') || ''),
-        'Current level: ' + String(data.get('playerLevel') || ''),
-        '',
-        'Question / context:',
-        String(data.get('message') || 'No additional message provided.'),
-        '',
-        'Sent from the GTA Mavericks Fall Rep Tryouts landing page.',
-      ].join('\n');
-      status.textContent = 'Opening your email app…';
-      window.location.href = 'mailto:info@gtamavericks.ca?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-    });
   }
 
   // ---- Iframe height sync (for the WordPress embed) ----

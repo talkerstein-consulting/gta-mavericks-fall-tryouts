@@ -1,6 +1,5 @@
 ---
 import Button from './Button.astro';
-import QuickContactForm from './QuickContactForm.astro';
 import { site } from '../data/site';
 ---
 
@@ -38,7 +37,6 @@ import { site } from '../data/site';
           Fundamentals based on current readiness and commitment.
         </p>
       </div>
-      <QuickContactForm />
     </div>
   </div>
 </section>
@@ -87,10 +85,6 @@ import { site } from '../data/site';
     z-index: -2;
   }
   .hero-top-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1.18fr) minmax(340px, 0.72fr);
-    gap: 44px;
-    align-items: center;
     padding-top: 116px;
     padding-bottom: 82px;
   }
@@ -149,10 +143,6 @@ import { site } from '../data/site';
     max-width: 590px;
   }
   @media (max-width: 1100px) {
-    .hero-top-grid {
-      grid-template-columns: minmax(0, 1fr) minmax(330px, 0.72fr);
-      gap: 28px;
-    }
     .hero h1 {
       font-size: clamp(50px, 7.4vw, 88px);
     }
@@ -169,13 +159,8 @@ import { site } from '../data/site';
       align-items: stretch;
     }
     .hero-top-grid {
-      grid-template-columns: 1fr;
       padding-top: 142px;
       padding-bottom: 92px;
-      gap: 34px;
-    }
-    .hero-content {
-      max-width: 760px;
     }
   }
   @media (max-width: 760px) {

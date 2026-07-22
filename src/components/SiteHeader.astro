@@ -5,7 +5,7 @@ import { site } from '../data/site';
 <header class="header">
   <div class="wrap header-inner">
     <img alt="GTA Mavericks Basketball" class="logo" src={site.logoUrl} />
-    <a class="header-cta" href="#quick-contact">Ask a tryout question</a>
+    <a class="header-cta" href={`mailto:${site.email}?subject=Tryout%20Question`}>Ask a tryout question</a>
   </div>
 </header>
 

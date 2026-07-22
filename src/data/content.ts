@@ -108,6 +108,10 @@ export const paths = [
   {
     featured: false,
     image: 'https://gtamavericks.ca/wp-content/uploads/2024/12/Preparing-for-basketball-tryouts.webp',
+    // Source photo is a wide gym-floor shot; default center-crop lands on
+    // the empty doors/mats in the background instead of the kids doing
+    // push-ups, who are toward the left third of the frame.
+    imagePosition: 'left center',
     alt: 'Young basketball players building strength during GTA Mavericks fundamentals training',
     kicker: 'Beginner pathway',
     title: 'Fundamentals Basketball Program',

@@ -20,7 +20,7 @@ import { site } from '../data/site';
       {
         paths.map((path, i) => (
           <article class={`path-card${path.featured ? ' featured' : ''} reveal reveal-scale`} style={`--delay:${i * 70}ms`}>
-            <img alt={path.alt} src={path.image} />
+            <img alt={path.alt} src={path.image} style={path.imagePosition ? `object-position:${path.imagePosition}` : undefined} />
             <div class="path-card-content">
               <span class="path-kicker">{path.kicker}</span>
               <h3>{path.title}</h3>
