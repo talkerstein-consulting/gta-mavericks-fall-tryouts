@@ -1,0 +1,139 @@
+---
+import { evalItems } from '../data/content';
+---
+
+<section class="section" data-animate-section="true">
+  <div class="wrap proof-grid">
+    <div class="proof-photo reveal">
+      <img alt="GTA Mavericks player taking a jump shot during competitive basketball play" src="/images/mavericks-action-placeholder.webp" />
+      <div class="proof-caption">
+        <b>Picture yourself here.</b>
+        <span>Real competition. Real teammates. Real coaching.</span>
+      </div>
+    </div>
+    <div class="proof-copy reveal">
+      <div class="eyebrow">What coaches evaluate</div>
+      <h2>More than points and highlights.</h2>
+      <p>
+        Tryouts are designed to see how athletes move, think, compete, communicate, and respond to coaching—not
+        only who scores the most.
+      </p>
+      <div class="eval-list">
+        {
+          evalItems.map((item, i) => (
+            <div class="eval-item">
+              <span>{String(i + 1).padStart(2, '0')}</span>
+              {item}
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .proof-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+    align-items: stretch;
+  }
+  .proof-photo {
+    border-radius: var(--radius);
+    overflow: hidden;
+    min-height: 650px;
+    position: relative;
+    box-shadow: var(--shadow);
+  }
+  .proof-photo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(3, 6, 10, 0.72), transparent 55%);
+  }
+  .proof-photo img {
+    object-position: center 40%;
+  }
+  .proof-caption {
+    position: absolute;
+    left: 28px;
+    right: 28px;
+    bottom: 26px;
+    z-index: 2;
+  }
+  .proof-caption b {
+    font-size: 28px;
+    line-height: 1.05;
+    display: block;
+  }
+  .proof-caption span {
+    display: block;
+    color: #d3dbe6;
+    margin-top: 8px;
+    font-size: 14px;
+  }
+  .proof-copy {
+    padding: 48px;
+    border: 1px solid var(--line);
+    background: linear-gradient(145deg, var(--panel-2), #080c12);
+    border-radius: var(--radius);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .proof-copy h2 {
+    font-size: clamp(38px, 5vw, 64px);
+    line-height: 0.98;
+    letter-spacing: -2.5px;
+    margin-top: 15px;
+  }
+  .proof-copy p {
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.65;
+    margin-top: 22px;
+  }
+  .eval-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 28px;
+  }
+  .eval-item {
+    padding: 16px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.045);
+    border: 1px solid var(--line);
+    font-size: 13px;
+    font-weight: 800;
+  }
+  .eval-item span {
+    color: var(--blue-2);
+    margin-right: 7px;
+  }
+  @media (max-width: 980px) {
+    .proof-grid {
+      grid-template-columns: 1fr;
+      gap: 42px;
+    }
+    .proof-photo {
+      min-height: 560px;
+    }
+  }
+  @media (max-width: 520px) {
+    .proof-copy {
+      padding: 30px;
+    }
+    .proof-photo {
+      min-height: 510px;
+    }
+    .proof-caption {
+      left: 22px;
+      right: 22px;
+    }
+    .eval-list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

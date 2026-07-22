@@ -1,0 +1,300 @@
+---
+import Button from './Button.astro';
+import { paths, miniPaths } from '../data/content';
+import { site } from '../data/site';
+---
+
+<section class="section paths-section" data-animate-section="true" id="paths">
+  <div class="wrap">
+    <div class="paths-header reveal">
+      <div>
+        <div class="eyebrow">Choose your path</div>
+        <h2 class="section-title">One tryout. More than one way forward.</h2>
+      </div>
+      <p class="section-intro">
+        <strong style="color:#0a1220">Rep is the aspiration. The right placement is the outcome.</strong> Mavericks
+        gives athletes a pathway that matches current ability, goals, and family commitment.
+      </p>
+    </div>
+    <div class="path-grid">
+      {
+        paths.map((path, i) => (
+          <article class={`path-card${path.featured ? ' featured' : ''} reveal reveal-scale`} style={`--delay:${i * 70}ms`}>
+            <img alt={path.alt} src={path.image} />
+            <div class="path-card-content">
+              <span class="path-kicker">{path.kicker}</span>
+              <h3>{path.title}</h3>
+              <p>{path.body}</p>
+              <div class="path-meta">
+                {path.meta.map((m) => (
+                  <span>{m}</span>
+                ))}
+              </div>
+              <Button
+                href={path.ctaHref ?? site.registrationUrl}
+                target={path.ctaHref ? undefined : '_blank'}
+                variant="small"
+              >
+                {path.ctaLabel}
+              </Button>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+    <div class="more-paths">
+      {
+        miniPaths.map((mini, i) => (
+          <article class="mini-path reveal reveal-scale" style={`--delay:${i * 70}ms`}>
+            <img alt={mini.alt} src={mini.image} />
+            <div class="mini-content">
+              <div class="mini-meta">{mini.meta}</div>
+              <h3>{mini.title}</h3>
+              <p>{mini.body}</p>
+              <a href={mini.linkHref} target={mini.external ? '_blank' : undefined} rel={mini.external ? 'noopener' : undefined}>
+                {mini.linkLabel}
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .paths-section {
+    background: #f5f7fb;
+    color: #0a1220;
+    overflow: hidden;
+  }
+  .paths-section::before {
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: rgba(17, 156, 229, 0.08);
+    filter: blur(60px);
+    right: -220px;
+    top: -180px;
+  }
+  .paths-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    align-items: end;
+    position: relative;
+  }
+  .paths-header .section-intro {
+    color: #5e6d80;
+    margin: 0;
+    max-width: 470px;
+  }
+  .path-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 44px;
+    position: relative;
+  }
+  .path-card {
+    position: relative;
+    min-height: 590px;
+    border-radius: 24px;
+    overflow: hidden;
+    isolation: isolate;
+    box-shadow: 0 20px 50px rgba(16, 38, 67, 0.15);
+  }
+  .path-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(4, 9, 16, 0.98) 0%, rgba(4, 9, 16, 0.72) 47%, rgba(4, 9, 16, 0.05) 78%);
+    z-index: -1;
+  }
+  .path-card img {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    transition: transform 0.5s ease;
+  }
+  .path-card:hover img {
+    transform: scale(1.045);
+  }
+  .path-card-content {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 28px;
+  }
+  .path-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 10px;
+    border-radius: 999px;
+    background: rgba(56, 182, 255, 0.17);
+    border: 1px solid rgba(56, 182, 255, 0.35);
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #8dd7ff;
+  }
+  .path-card h3 {
+    font-size: 30px;
+    line-height: 1.02;
+    margin-top: 14px;
+    color: #fff;
+  }
+  .path-card p {
+    font-size: 14px;
+    line-height: 1.55;
+    color: #d2d9e3;
+    margin-top: 12px;
+  }
+  .path-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin: 17px 0 21px;
+  }
+  .path-meta span {
+    font-size: 10px;
+    font-weight: 800;
+    padding: 6px 8px;
+    border-radius: 7px;
+    background: rgba(255, 255, 255, 0.09);
+    color: #e6edf6;
+  }
+  .path-card.featured {
+    outline: 3px solid var(--blue-2);
+    outline-offset: -3px;
+  }
+  .path-card.featured::before {
+    content: 'Main tryout pathway';
+    position: absolute;
+    z-index: 4;
+    top: 18px;
+    right: 18px;
+    background: var(--blue-2);
+    color: #021018;
+    padding: 8px 10px;
+    border-radius: 8px;
+    font-size: 9px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+  .more-paths {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 16px;
+  }
+  .mini-path {
+    display: grid;
+    grid-template-columns: 190px 1fr;
+    min-height: 260px;
+    border: 1px solid #dde5ef;
+    border-radius: 22px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 16px 40px rgba(16, 38, 67, 0.08);
+  }
+  .mini-path img {
+    min-height: 260px;
+  }
+  .mini-content {
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .mini-content h3 {
+    font-size: 25px;
+    line-height: 1.05;
+  }
+  .mini-content p {
+    color: #607086;
+    line-height: 1.55;
+    font-size: 14px;
+    margin-top: 11px;
+  }
+  .mini-meta {
+    font-size: 11px;
+    color: #087fc1;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 900;
+    margin-bottom: 10px;
+  }
+  .mini-content a {
+    color: #087fc1;
+    font-size: 12px;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-top: 16px;
+    display: inline-block;
+  }
+  @media (max-width: 980px) {
+    .paths-header {
+      display: block;
+    }
+    .paths-header .section-intro {
+      margin-top: 18px;
+    }
+    .path-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .path-card:last-child {
+      grid-column: 1 / -1;
+      min-height: 520px;
+    }
+  }
+  @media (max-width: 760px) {
+    .path-grid {
+      grid-template-columns: 1fr;
+    }
+    .more-paths {
+      grid-template-columns: 1fr;
+    }
+    .path-card,
+    .path-card:last-child {
+      grid-column: auto;
+      min-height: 540px;
+    }
+    .mini-path {
+      grid-template-columns: 130px 1fr;
+    }
+    .mini-path img {
+      min-height: 270px;
+    }
+    .mini-content {
+      padding: 22px;
+    }
+  }
+  @media (max-width: 520px) {
+    .path-card {
+      min-height: 570px;
+    }
+    .path-card-content {
+      padding: 24px;
+    }
+    .path-card h3 {
+      font-size: 28px;
+    }
+    .mini-path {
+      display: block;
+    }
+    .mini-path img {
+      height: 230px;
+      min-height: 0;
+    }
+    .mini-content {
+      padding: 24px;
+    }
+  }
+</style>

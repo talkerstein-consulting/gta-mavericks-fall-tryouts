@@ -1,0 +1,81 @@
+---
+import SectionIntro from './SectionIntro.astro';
+import { faqItems } from '../data/content';
+---
+
+<section class="section" data-animate-section="true" id="faq">
+  <div class="wrap faq-grid">
+    <SectionIntro eyebrow="Parent questions" title="Know before you register.">
+      <p class="section-intro">The essentials parents usually want clarified before tryout day.</p>
+    </SectionIntro>
+    <div class="faq-list reveal">
+      {
+        faqItems.map((item, i) => (
+          <div class={`faq-item${item.open ? ' open' : ''} reveal reveal-right`} style={`--delay:${i % 4 === 0 ? 0 : (i % 4) * 70}ms`}>
+            <button aria-expanded={item.open ? 'true' : 'false'} class="faq-q">
+              <span>{item.q}</span>
+              <span>+</span>
+            </button>
+            <div class="faq-a">{item.a}</div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-grid {
+    display: grid;
+    grid-template-columns: 0.75fr 1.25fr;
+    gap: 70px;
+  }
+  .faq-list {
+    border-top: 1px solid var(--line);
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--line);
+  }
+  .faq-q {
+    width: 100%;
+    background: none;
+    border: 0;
+    color: #fff;
+    padding: 22px 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    text-align: left;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+  }
+  .faq-q span:last-child {
+    color: var(--blue-2);
+    font-size: 24px;
+    line-height: 1;
+    transition: 0.2s ease;
+  }
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    color: var(--muted);
+    line-height: 1.65;
+    font-size: 14px;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    padding-right: 30px;
+  }
+  .faq-item.open .faq-a {
+    max-height: 250px;
+    padding-bottom: 22px;
+  }
+  .faq-item.open .faq-q span:last-child {
+    transform: rotate(45deg);
+  }
+  @media (max-width: 980px) {
+    .faq-grid {
+      grid-template-columns: 1fr;
+      gap: 42px;
+    }
+  }
+</style>

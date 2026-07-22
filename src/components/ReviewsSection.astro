@@ -1,0 +1,233 @@
+---
+import { reviews } from '../data/content';
+import { site } from '../data/site';
+---
+
+<section class="section reviews-section" data-animate-section="true" id="reviews">
+  <div class="wrap">
+    <div class="reviews-head">
+      <div class="reveal reveal-left">
+        <div class="eyebrow">Google reviews</div>
+        <h2 class="section-title">Parents notice the coaching.</h2>
+        <p class="section-intro">
+          Families consistently mention professional coaching, genuine care, stronger skills, and children who look
+          forward to coming back.
+        </p>
+      </div>
+      <a
+        aria-label="Open GTA Mavericks reviews on Google Maps"
+        class="google-rating-card reveal reveal-right"
+        href={site.googleMapsUrl}
+        rel="noopener"
+        target="_blank"
+      >
+        <span aria-hidden="true" class="google-g">G</span>
+        <span><strong>Read verified reviews</strong><span>GTA Mavericks on Google</span></span>
+      </a>
+    </div>
+    <div class="review-grid">
+      {
+        reviews.map((review, i) => (
+          <article class="review-card reveal reveal-scale" style={`--delay:${60 + i * 80}ms`}>
+            <div aria-label="Five stars" class="review-stars">★★★★★</div>
+            <blockquote>“{review.quote}”</blockquote>
+            <div class="review-author">
+              <b>{review.author}</b>
+              <span>{review.role}</span>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+    <div class="reviews-foot reveal">
+      <span>
+        Review excerpts are condensed for readability. Open Google to view current, complete reviews and the latest
+        business-profile information.
+      </span>
+      <a class="google-link" href={site.googleMapsUrl} rel="noopener" target="_blank">View all Google reviews</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .reviews-section {
+    background: linear-gradient(180deg, #06090f, #0c121d);
+    overflow: hidden;
+  }
+  .reviews-section::before {
+    content: '';
+    position: absolute;
+    width: 520px;
+    height: 520px;
+    border-radius: 50%;
+    left: -260px;
+    top: -240px;
+    background: radial-gradient(circle, rgba(56, 182, 255, 0.14), transparent 67%);
+  }
+  .reviews-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 40px;
+    position: relative;
+  }
+  .google-rating-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 17px 20px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.045);
+    min-width: 260px;
+  }
+  .google-rating-card .google-g {
+    flex: 0 0 auto;
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    background: #fff;
+    color: #4285f4;
+    font-size: 20px;
+    font-family: Arial, sans-serif;
+    font-weight: 900;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+  }
+  .google-rating-card strong {
+    display: block;
+    font-size: 14px;
+  }
+  .google-rating-card span {
+    display: block;
+    color: var(--muted);
+    font-size: 11px;
+    margin-top: 4px;
+  }
+  .review-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 38px;
+    position: relative;
+  }
+  .review-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 330px;
+    padding: 28px;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    background: linear-gradient(150deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.025));
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.16);
+    transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+  }
+  .review-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(56, 182, 255, 0.45);
+    background: linear-gradient(150deg, rgba(56, 182, 255, 0.1), rgba(255, 255, 255, 0.03));
+  }
+  .review-stars {
+    color: #fbbc04;
+    letter-spacing: 2px;
+    font-size: 15px;
+  }
+  .review-card blockquote {
+    font-size: 17px;
+    line-height: 1.58;
+    color: #e7edf6;
+    margin-top: 22px;
+    flex: 1;
+  }
+  .review-author {
+    margin-top: 24px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+  .review-author b {
+    font-size: 13px;
+    display: block;
+  }
+  .review-author span {
+    font-size: 10px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 5px;
+    display: block;
+  }
+  .reviews-foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    margin-top: 28px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  .google-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .google-link::after {
+    content: '↗';
+    color: var(--blue-2);
+    font-size: 16px;
+  }
+  @media (max-width: 900px) {
+    .review-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .review-card:last-child {
+      grid-column: 1 / -1;
+      min-height: 260px;
+    }
+    .reviews-head {
+      align-items: flex-start;
+    }
+    .google-rating-card {
+      min-width: 240px;
+    }
+  }
+  @media (max-width: 760px) {
+    .reviews-head {
+      display: block;
+    }
+    .google-rating-card {
+      margin-top: 22px;
+      width: 100%;
+      min-width: 0;
+    }
+    .review-grid {
+      grid-template-columns: 1fr;
+    }
+    .review-card:last-child {
+      grid-column: auto;
+    }
+    .review-card {
+      min-height: 0;
+    }
+    .reviews-foot {
+      display: block;
+    }
+    .reviews-foot .google-link {
+      margin-top: 16px;
+    }
+  }
+  @media (max-width: 560px) {
+    .review-card {
+      padding: 23px;
+    }
+    .review-card blockquote {
+      font-size: 16px;
+    }
+  }
+</style>

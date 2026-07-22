@@ -1,0 +1,106 @@
+---
+import Button from './Button.astro';
+import { site } from '../data/site';
+---
+
+<section class="final-cta" data-animate-section="true">
+  <div class="wrap">
+    <div class="final-card reveal">
+      <img alt="GTA Mavericks Rep basketball game action" src="/images/mavericks-action-placeholder.webp" />
+      <div class="final-content">
+        <div class="eyebrow">{site.eventDatesShort}, {site.eventYear}</div>
+        <h2>Your next team starts with one tryout.</h2>
+        <p>
+          Step onto the court, meet the coaches, compete with motivated players, and find the Mavericks pathway
+          that can move your game forward.
+        </p>
+        <div class="final-meta">
+          <span>{site.ageRange}</span>
+          <span>Boys &amp; Girls</span>
+          <span>{site.city}</span>
+          <span>{site.fee}</span>
+        </div>
+        <Button href={site.registrationUrl} target="_blank">Register for Fall Rep Tryouts</Button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .final-cta {
+    padding: 100px 0 120px;
+  }
+  .final-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 28px;
+    min-height: 490px;
+    display: flex;
+    align-items: center;
+    padding: 70px;
+    isolation: isolate;
+    box-shadow: var(--shadow);
+  }
+  .final-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(3, 6, 11, 0.96), rgba(3, 6, 11, 0.62) 58%, rgba(3, 6, 11, 0.15));
+    z-index: -1;
+  }
+  .final-card img {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    object-position: center 42%;
+  }
+  .final-content {
+    max-width: 680px;
+  }
+  .final-content h2 {
+    font-size: clamp(44px, 6vw, 76px);
+    line-height: 0.92;
+    letter-spacing: -3px;
+    text-transform: uppercase;
+    margin-top: 16px;
+  }
+  .final-content p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #d6deea;
+    margin-top: 20px;
+    max-width: 580px;
+  }
+  .final-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 24px;
+  }
+  .final-meta span {
+    padding: 8px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.28);
+    font-size: 11px;
+    font-weight: 800;
+  }
+  .final-content :global(.btn) {
+    margin-top: 28px;
+  }
+  @media (max-width: 760px) {
+    .final-card {
+      padding: 42px 28px;
+      min-height: 560px;
+      align-items: flex-end;
+    }
+    .final-card::before {
+      background: linear-gradient(0deg, rgba(3, 6, 11, 0.98), rgba(3, 6, 11, 0.6) 68%, rgba(3, 6, 11, 0.18));
+    }
+  }
+  @media (max-width: 520px) {
+    .final-content h2 {
+      letter-spacing: -2px;
+    }
+  }
+</style>

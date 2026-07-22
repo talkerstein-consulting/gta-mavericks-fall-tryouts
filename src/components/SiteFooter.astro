@@ -1,0 +1,33 @@
+---
+import { site } from '../data/site';
+---
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>© {site.eventYear} GTA Mavericks Basketball Association</div>
+    <div>{site.phoneDisplayFooter} · {site.email} · {site.address}</div>
+  </div>
+</footer>
+
+<style>
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 28px 0 90px;
+    color: #778397;
+    font-size: 12px;
+  }
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  @media (max-width: 520px) {
+    .footer-inner {
+      display: block;
+    }
+    .footer-inner div + div {
+      margin-top: 8px;
+    }
+  }
+</style>

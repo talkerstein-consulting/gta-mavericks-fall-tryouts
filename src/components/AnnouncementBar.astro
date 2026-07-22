@@ -1,0 +1,36 @@
+---
+import { site } from '../data/site';
+---
+
+<div class="announcement">
+  Fall Rep Tryouts <span>•</span> {site.eventDatesShort} <span>•</span> {site.ageRange} Boys &amp; Girls <span>•</span>
+   {site.city}
+</div>
+
+<style>
+  .announcement {
+    position: relative;
+    z-index: 20;
+    background: linear-gradient(90deg, #0582c5, #38b6ff 48%, #7b4dff);
+    color: #031018;
+    padding: 10px 18px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .announcement span {
+    opacity: 0.55;
+    margin: 0 9px;
+  }
+  @media (max-width: 760px) {
+    .announcement {
+      font-size: 10px;
+      line-height: 1.4;
+    }
+    .announcement span {
+      margin: 0 5px;
+    }
+  }
+</style>

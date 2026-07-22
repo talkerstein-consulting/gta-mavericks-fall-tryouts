@@ -1,0 +1,79 @@
+---
+import { site } from '../data/site';
+---
+
+<div class="wrap countdown-shell reveal">
+  <div aria-label="Countdown to tryouts" class="countdown" data-countdown-target={site.countdownTargetIso}>
+    <div class="countdown-copy">
+      <div class="eyebrow">Registration is open</div>
+      <strong>Tryouts begin in:</strong>
+    </div>
+    <div class="time-unit"><b id="days">--</b><span>Days</span></div>
+    <div class="time-unit"><b id="hours">--</b><span>Hours</span></div>
+    <div class="time-unit"><b id="minutes">--</b><span>Minutes</span></div>
+    <div class="time-unit"><b id="seconds">--</b><span>Seconds</span></div>
+  </div>
+</div>
+
+<style>
+  .countdown-shell {
+    margin-top: -44px;
+    position: relative;
+    z-index: 4;
+  }
+  .countdown {
+    background: linear-gradient(145deg, rgba(18, 25, 37, 0.98), rgba(7, 11, 17, 0.98));
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    display: grid;
+    grid-template-columns: 1.35fr repeat(4, 0.72fr);
+    overflow: hidden;
+  }
+  .countdown-copy {
+    padding: 24px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .countdown-copy strong {
+    font-size: 18px;
+    margin-top: 4px;
+  }
+  .time-unit {
+    padding: 22px 18px;
+    text-align: center;
+    border-left: 1px solid var(--line);
+  }
+  .time-unit b {
+    display: block;
+    font-size: clamp(28px, 4vw, 46px);
+    line-height: 1;
+    font-weight: 900;
+    color: var(--blue-2);
+  }
+  .time-unit span {
+    display: block;
+    margin-top: 7px;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 800;
+  }
+  @media (max-width: 760px) {
+    .countdown {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .countdown-copy {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 18px;
+    }
+    .time-unit {
+      border-left: 1px solid var(--line);
+      border-top: 1px solid var(--line);
+      padding: 18px 7px;
+    }
+  }
+</style>

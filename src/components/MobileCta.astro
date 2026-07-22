@@ -1,0 +1,37 @@
+---
+import Button from './Button.astro';
+import { site } from '../data/site';
+---
+
+<div class="mobile-cta" id="mobileCta">
+  <Button href={site.registrationUrl} target="_blank">Register for Tryouts — {site.fee}</Button>
+</div>
+
+<style>
+  .mobile-cta {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    z-index: 80;
+    display: none;
+    transform: translateY(120%);
+    transition: 0.25s ease;
+  }
+  .mobile-cta.show {
+    transform: translateY(0);
+  }
+  .mobile-cta.suppress {
+    transform: translateY(120%) !important;
+    pointer-events: none;
+  }
+  .mobile-cta :global(.btn) {
+    width: 100%;
+    box-shadow: 0 14px 45px rgba(0, 0, 0, 0.45);
+  }
+  @media (max-width: 760px) {
+    .mobile-cta {
+      display: block;
+    }
+  }
+</style>
