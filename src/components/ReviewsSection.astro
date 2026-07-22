@@ -41,10 +41,9 @@ import { site } from '../data/site';
     </div>
     <div class="reviews-foot reveal">
       <span>
-        Review excerpts are condensed for readability. Open Google to view current, complete reviews and the latest
-        business-profile information.
+        Review excerpts are condensed for readability. See our Google Business profile above for current, complete
+        reviews.
       </span>
-      <a class="google-link" href={site.googleMapsUrl} rel="noopener" target="_blank">View all Google reviews</a>
     </div>
   </div>
 </section>
@@ -158,29 +157,10 @@ import { site } from '../data/site';
     display: block;
   }
   .reviews-foot {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 24px;
     margin-top: 28px;
     color: var(--muted);
     font-size: 12px;
     line-height: 1.5;
-  }
-  .google-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: #fff;
-    font-size: 12px;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-  .google-link::after {
-    content: '↗';
-    color: var(--blue-2);
-    font-size: 16px;
   }
   @media (max-width: 900px) {
     .review-grid {
@@ -214,12 +194,6 @@ import { site } from '../data/site';
     }
     .review-card {
       min-height: 0;
-    }
-    .reviews-foot {
-      display: block;
-    }
-    .reviews-foot .google-link {
-      margin-top: 16px;
     }
   }
   @media (max-width: 560px) {
