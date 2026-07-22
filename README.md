@@ -53,7 +53,7 @@ WordPress page (Custom HTML block, or in the theme):
 ```html
 <iframe
   id="mavericks-tryouts-frame"
-  src="https://<your-vercel-domain>/"
+  src="https://gta-mavericks-fall-tryouts.vercel.app/"
   title="GTA Mavericks Fall Rep Tryouts"
   style="width: 100%; border: 0; display: block;"
   height="800"
@@ -70,8 +70,8 @@ WordPress page (Custom HTML block, or in the theme):
 </script>
 ```
 
-Replace `<your-vercel-domain>` with the deployed Vercel URL (or a custom
-domain pointed at it). External links (registration, Google reviews, camps
+Swap in a custom domain pointed at the Vercel project if you want the iframe
+`src` off the `*.vercel.app` domain. External links (registration, Google reviews, camps
 page) open in a new tab via `target="_blank"`, so they escape the iframe
 correctly; in-page anchor links (FAQ, schedule, etc.) scroll within the
 iframe itself.
