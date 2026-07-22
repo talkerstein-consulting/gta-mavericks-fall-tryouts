@@ -5,22 +5,22 @@ export const whyCards = [
   {
     num: '01',
     title: 'Test the level',
-    body: 'Compete beside motivated athletes and see how your child responds to a stronger basketball environment.',
+    body: 'Step onto the court with motivated teammates and watch your child rise to meet a whole new level of competition.',
   },
   {
     num: '02',
     title: 'Meet the coaches',
-    body: 'Experience the communication, standards, teaching style, and professionalism that shape the season.',
+    body: 'Get to know the coaches who will push, encourage, and show up for your child all season long.',
   },
   {
     num: '03',
     title: 'Find the right team',
-    body: 'Rep is the flagship, but Select may be the better competitive fit when time, travel, or readiness is different.',
+    body: 'Rep is the top prize, but Select might be the perfect fit if your schedule, travel, or timing calls for it.',
   },
   {
     num: '04',
     title: 'Get a clear next step',
-    body: 'Every athlete receives an outcome and a recommended pathway—not a vague "we’ll let you know."',
+    body: 'Every athlete walks away with a real answer and a next step — never a vague "we’ll be in touch."',
   },
 ];
 
@@ -140,7 +140,7 @@ export const miniPaths = [
     title: 'Basketball Camps',
     body: 'High-energy training, games, challenges, and coaching during summer, spring, and school breaks.',
     linkLabel: 'View basketball camps →',
-    linkHref: 'https://gtamavericks.ca/programs/camps/summer-basketball-camp/',
+    linkHref: 'https://gtamavericks.ca/summer-basketball-camp-vaughan/',
     external: true,
   },
 ];
